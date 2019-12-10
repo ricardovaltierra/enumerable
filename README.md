@@ -3,28 +3,28 @@
 
 # 📃 ruby-bubble-sort
 
-this project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ 'The Global School for Remote Software Developers!').
+This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ 'The Global School for Remote Software Developers!').
 
-this is the implementation of my own version of Ruby’s enumerable methods.
+The project consist on the implementation of my particular version of Ruby’s enumerable methods.
 
 
 
 ## 🔗 link to assignment
 
-the assignment can be found in the Odin Project's HTML and CSS course that can be found [here](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks).
+The full assignment can be found in the Odin Project's HTML and CSS course that can be found [here](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks).
 
 
 
 ## 📡 technologies used
 
-- ruby
-- github
+- Ruby
+- Github
 
-basic ruby and github was used on this project.
+Basic ruby and github was used on this project.
 
 ## 🚀 the project
 
-this project can be found in https://github.com/ricardovaltierra/enumerable-methods
+This project can be found in https://github.com/ricardovaltierra/enumerable-methods
 
 ### ✨ [code picture]
 
@@ -36,28 +36,26 @@ this project can be found in https://github.com/ricardovaltierra/enumerable-meth
 
 ## 🤝 contributing
 
-contributions, issues and feature requests are welcome!<br/>Feel free to check [issues page](https://github.com/ricardovaltierra/enumerable-methods/issues).
+Contributions, issues and feature requests are welcome!<br/>Feel free to check [issues page](https://github.com/ricardovaltierra/enumerable-methods/issues).
 
-1. fork it (https://github.com/ricardovaltierra/enumerable-methods/development/fork)
-2. create your working branch (git checkout -b [choose-a-name])
-3. commit your changes (git commit -am 'what this commit will fix/add/improve')
-4. push to the branch (git push origin [chosen-name])
-5. create a new pull request
+1. Fork it (https://github.com/ricardovaltierra/enumerable-methods/development/fork)
+2. Create your working branch (git checkout -b [choose-a-name])
+3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
+4. Push to the branch (git push origin [chosen-name])
+5. Create a new pull request
 
 
 
 ## 🤖 contributor
 
-ricardo valtierra - [GitHub](https://github.com/ricardovaltierra)
+Ricardo Valtierra - [GitHub](https://github.com/ricardovaltierra)
 
 
 
 ## 🙋‍♂ show your support
 
-give a ⭐️ if you like this project!
-
-
+Give a ⭐️ if you like this project!
 
 ## 📝 license
 
-this project is [MIT](https://github.com/ricardovaltierra/enumerable-methods/blob/development/LICENSE) licensed.
+This project is [MIT](https://github.com/ricardovaltierra/enumerable-methods/blob/development/LICENSE) licensed.
