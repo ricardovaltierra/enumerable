@@ -29,7 +29,7 @@ module Enumerable
 
   def my_all?
     test = true
-    my_each { |u| break unless test = yield(u) }
+    my_each { |d| break unless test = yield(d) }
     test
   end
 
@@ -41,11 +41,14 @@ module Enumerable
 
   def my_none?
     test = true
-    my_each { |u| break unless test = !yield(u) }
+    my_each { |t| break unless test = !yield(t) }
     test
   end
 
   def my_count
+    total = 0
+    my_each { |z| block_given? ? (total += 1 if yield(z)) : (total += 1) }
+    total
   end
 
   def my_map
@@ -58,4 +61,3 @@ module Enumerable
   end
 
 end
-
