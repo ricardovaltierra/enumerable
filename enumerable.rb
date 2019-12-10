@@ -13,7 +13,12 @@ module Enumerable
   end
 
   def my_each_with_index
-    
+    temp = self
+    i = 0
+    while i < temp.length do 
+      yield(temp[i], i)
+      i += 1
+    end
   end
 
   def my_select
@@ -44,4 +49,3 @@ end
 
 arr = [2,1,5,10,400,62]
 
-arr.my_each {|i| puts i}
