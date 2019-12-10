@@ -39,7 +39,10 @@ module Enumerable
     test
   end
 
-  def my_none
+  def my_none?
+    test = true
+    my_each { |u| break unless test = !yield(u) }
+    test
   end
 
   def my_count
@@ -55,6 +58,4 @@ module Enumerable
   end
 
 end
-
-
 
