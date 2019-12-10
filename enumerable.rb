@@ -22,12 +22,21 @@ module Enumerable
   end
 
   def my_select
+    temp = []
+    my_each { |e| temp << e if yield(e) }
+    temp
   end
 
-  def my_all
+  def my_all?
+    test = true
+    my_each { |u| break unless test = yield(u) }
+    test
   end
 
-  def my_any
+  def my_any?
+    test = false
+    my_each { |u| break if test = yield(u) }
+    test
   end
 
   def my_none
@@ -47,5 +56,5 @@ module Enumerable
 
 end
 
-arr = [2,1,5,10,400,62]
+
 
