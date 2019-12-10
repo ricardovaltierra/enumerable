@@ -51,7 +51,10 @@ module Enumerable
     total
   end
 
-  def my_map
+  def my_map(&proc)
+    temp = []
+    my_each { |f| defined?(proc) ? (temp << proc.call(f)) : (temp << yield(f)) }
+    temp
   end
 
   def my_inject
