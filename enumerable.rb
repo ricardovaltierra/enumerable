@@ -61,7 +61,7 @@ module Enumerable
       my_each_with_index { |v| memo = yield(memo, v) }
     else
       memo = self[0]
-      my_each_with_index { |v,i| memo = yield(memo, v) if i.positive? }
+      my_each_with_index { |v, i| memo = yield(memo, v) if i.positive? }
     end
     memo
   end
