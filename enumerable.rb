@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-module Enumerable
-
-  # my 'each' version
+module Enumerable  
   def my_each
     temp = self
     i = 0
-    while i < temp.length do 
+    while i < temp.length
       yield(temp[i])
       i += 1
     end
@@ -15,7 +13,7 @@ module Enumerable
   def my_each_with_index
     temp = self
     i = 0
-    while i < temp.length do 
+    while i < temp.length
       yield(temp[i], i)
       i += 1
     end
@@ -29,19 +27,19 @@ module Enumerable
 
   def my_all?
     test = true
-    my_each { |d| break unless test = yield(d) }
+    my_each { |d| break unless test == yield(d) }
     test
   end
 
   def my_any?
     test = false
-    my_each { |u| break if test = yield(u) }
+    my_each { |u| break if test == yield(u) }
     test
   end
 
   def my_none?
     test = true
-    my_each { |t| break unless test = !yield(t) }
+    my_each { |t| break unless test == !yield(t) }
     test
   end
 
@@ -58,18 +56,17 @@ module Enumerable
   end
 
   def my_inject(init = nil)
-    if (init != nil) 
+    if !init.nil?
       memo = init
-      my_each_with_index { |v,i| memo = yield(memo,v) }
-    else 
+      my_each_with_index { |v| memo = yield(memo, v) }
+    else
       memo = self[0]
-      my_each_with_index { |v,i| memo = yield(memo,v) if i > 0 }
-    end   
+      my_each_with_index { |v,i| memo = yield(memo, v) if i.positive? }
+    end
     memo
   end
-
 end
 
 def multiply_els(array)
-  array.my_inject(2) { |res, c|  res * c }
+  array.my_inject(2) { |res, c| res * c }
 end
