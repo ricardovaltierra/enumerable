@@ -58,12 +58,18 @@ module Enumerable
   end
 
   def my_inject(init = nil)
-    memo = init != nil ? self[0] + init : self[0]
-    my_each_with_index { |value,index| memo = yield(memo,value) if index > 0 }    
+    if (init != nil) 
+      memo = init
+      my_each_with_index { |v,i| memo = yield(memo,v) }
+    else 
+      memo = self[0]
+      my_each_with_index { |v,i| memo = yield(memo,v) if i > 0 }
+    end   
     memo
   end
 
-  def multiply_els
-  end
+end
 
+def multiply_els(array)
+  array.my_inject(2) { |res, c|  res * c }
 end
