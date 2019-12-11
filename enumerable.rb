@@ -57,7 +57,10 @@ module Enumerable
     temp
   end
 
-  def my_inject
+  def my_inject(init = nil)
+    memo = init != nil ? self[0] + init : self[0]
+    my_each_with_index { |value,index| memo = yield(memo,value) if index > 0 }    
+    memo
   end
 
   def multiply_els
