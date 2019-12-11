@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Enumerable  
+module Enumerable
   def my_each
     temp = self
     i = 0
