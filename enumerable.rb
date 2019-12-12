@@ -103,7 +103,15 @@ module Enumerable
   #MAP
   def my_map(&proc)
     temp = []
-    my_each { |f| defined?(proc) ? (temp << proc.call(f)) : (temp << yield(f)) }
+    my_each { |f| 
+      if block_given? 
+        temp << yield(f)
+      elsif defined?(proc)
+       temp << proc.call(f)
+      else
+        temp << f
+      end
+    }
     temp
   end
 
