@@ -40,7 +40,7 @@ module Enumerable
     if pattern # If a pattern is given
       my_each { |element| !(pattern === element) ? flag = false : flag = true }
     elsif block_given? # If a block is given
-      my_each { |element| !(yield(element)) ? flag = false : true }
+      my_each { |element| !yield(element) ? flag = false : true }
     else # If nothing is given
       my_each { |element| !element ? flag = false : true }
     end
@@ -51,9 +51,9 @@ module Enumerable
   def my_any?(pattern = nil)
     flag = false
     if pattern # If a pattern is given
-      my_each { |element| pattern === element ? flag = true : false }      
+      my_each { |element| pattern === element ? flag = true : false }
     elsif block_given? # If a block is given
-      my_each { |element| yield(element) ? flag = true : false }      
+      my_each { |element| yield(element) ? flag = true : false }
     else # If nothing is given
       my_each { |element| element ? flag = true : false }
     end
