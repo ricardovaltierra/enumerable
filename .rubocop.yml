@@ -8,7 +8,7 @@ AllCops:
   DisplayCopNames: true
 
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
   Max: 20
@@ -23,6 +23,8 @@ Metrics/BlockLength:
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
+  Enabled: false
+Style/CaseEquality:
   Enabled: false
 
 Layout/AlignHash:
