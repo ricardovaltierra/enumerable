@@ -36,50 +36,28 @@ module Enumerable
 
   # ALL?
   def my_all?(pattern = nil)
+    flag = true
     if pattern # If a pattern is given
-      my_each do |element|
-        unless pattern === element
-          return false          
-        end
-      end
+      my_each { |element| !(pattern === element) ? flag = false : flag = true }
     elsif block_given? # If a block is given
-      my_each do |element|
-        unless yield(element)
-          return false          
-        end
-      end
+      my_each { |element| !(yield(element)) ? flag = false : true }
     else # If nothing is given
-      my_each do |element|
-        unless element
-          return false          
-        end
-      end
+      my_each { |element| !element ? flag = false : true }
     end
-    true
+    flag
   end
 
   # ANY?
   def my_any?(pattern = nil)
+    flag = false
     if pattern # If a pattern is given
-      my_each do |element|
-        if pattern === element
-          return true          
-        end
-      end
+      my_each { |element| pattern === element ? flag = true : false }      
     elsif block_given? # If a block is given
-      my_each do |element|
-        if yield(element)
-          return true          
-        end
-      end
+      my_each { |element| yield(element) ? flag = true : false }      
     else # If nothing is given
-      my_each do |element|
-        if element
-          return true          
-        end
-      end
+      my_each { |element| element ? flag = true : false }
     end
-    false
+    flag
   end
 
   # NONE?
@@ -90,14 +68,14 @@ module Enumerable
   # COUNT
   def my_count(item = nil)
     count = 0
-    my_each do |z| 
-      if block_given? 
-        count += 1 if yield(z) 
-      elsif !item.nil? 
-        count += 1 if item == z 
-      else 
-        count = length 
-      end 
+    my_each do |z|
+      if block_given?
+        count += 1 if yield(z)
+      elsif !item.nil?
+        count += 1 if item == z
+      else
+        count = length
+      end
     end
     count
   end
@@ -142,6 +120,3 @@ end
 def multiply_els(array)
   array.my_inject { |res, c| res * c }
 end
-
-arr = [2,1,5,10,400,62]
-puts arr.count(400)
