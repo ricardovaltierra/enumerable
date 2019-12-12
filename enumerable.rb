@@ -94,10 +94,10 @@ module Enumerable
   end
 
   #COUNT
-  def my_count
-    total = 0
-    my_each { |z| block_given? ? (total += 1 if yield(z)) : (total += 1) }
-    total
+  def my_count(item = nil)
+    count = 0
+    my_each { |z| block_given? ? (count += 1 if yield(z)) : !item.nil? ? (count += 1 if item == z) : count = length }
+    count
   end
 
   #MAP
@@ -124,3 +124,4 @@ end
 def multiply_els(array)
   array.my_inject(2) { |res, c| res * c }
 end
+
