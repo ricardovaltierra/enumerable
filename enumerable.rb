@@ -116,20 +116,29 @@ module Enumerable
   end
 
   #INJECT
-  def my_inject(init = nil)
-    if !init.nil?
-      memo = init
-      my_each_with_index { |v| memo = yield(memo, v) }
-    else
-      memo = self[0]
-      my_each_with_index { |v, i| memo = yield(memo, v) if i.positive? }
-    end
-    memo
+  def my_inject(*init)
+    result = nil
+    arr = dup.to_a
+    if block_given?      
+      result = init[0].nil? ? arr[0] : init[0]
+      arr.shift if init[0].nil?
+      arr.my_each { |y| result = yield(result, y) }
+    elsif !block_given?      
+      if init[1].nil?
+        sym = init[0]        
+        result = arr[0]
+        arr[1..-1].my_each { |i| result = result.send(sym, i) }
+      elsif !init[1].nil?
+        sym = init[1]
+        result = init[0]
+        arr.my_each { |h| result = result.send(sym, h) }
+      end
+    end  
+    result
   end
 end
 
 #MULTIPLY_ELS (inject test)
 def multiply_els(array)
-  array.my_inject(2) { |res, c| res * c }
+  array.my_inject { |res, c| res * c }
 end
-
