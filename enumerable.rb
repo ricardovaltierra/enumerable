@@ -1,60 +1,113 @@
 # frozen_string_literal: true
 
 module Enumerable
+  #EACH
   def my_each
     temp = self
     i = 0
+    return temp unless block_given?
+    
     while i < temp.length
       yield(temp[i])
       i += 1
     end
   end
-
+  
+  #EACH_WITH_INDEX
   def my_each_with_index
     temp = self
     i = 0
+    return temp unless block_given?
+
     while i < temp.length
       yield(temp[i], i)
       i += 1
-    end
+    end    
   end
 
+  #SELECT
   def my_select
+    return self unless block_given?
+
     temp = []
     my_each { |e| temp << e if yield(e) }
-    temp
+    temp    
   end
 
-  def my_all?
-    test = true
-    my_each { |d| break unless test == yield(d) }
-    test
+  #ALL?
+  def my_all?(pattern = nil)
+    if pattern #If a pattern is given
+      my_each { |element| 
+        unless pattern === element 
+           return false
+           break
+        end
+      }
+    elsif block_given? #If a block is given
+      my_each { |element| 
+        unless yield(element)
+          return false
+          break
+        end
+      }
+    else #If nothing is given
+      my_each { |element| 
+        unless element 
+          return false
+          break
+        end
+      }
+    end
+    true
   end
 
-  def my_any?
-    test = false
-    my_each { |u| break if test == yield(u) }
-    test
+  #ANY?
+  def my_any?(pattern = nil)
+    if pattern #If a pattern is given
+      my_each { |element| 
+        if pattern === element 
+           return true
+           break
+        end
+      }
+    elsif block_given? #If a block is given
+      my_each { |element| 
+        if yield(element)
+          return true
+          break
+        end
+      }
+    else #If nothing is given
+      my_each { |element| 
+        if element 
+          return true
+          break
+        end
+      }
+    end
+    false
   end
 
-  def my_none?
-    test = true
-    my_each { |t| break unless test == !yield(t) }
-    test
+  #NONE?
+  def my_none?(pattern = nil, &block)
+    !my_any?(pattern, &block)
   end
 
+  #COUNT
   def my_count
     total = 0
     my_each { |z| block_given? ? (total += 1 if yield(z)) : (total += 1) }
     total
   end
 
+  #MAP
   def my_map(&proc)
     temp = []
     my_each { |f| defined?(proc) ? (temp << proc.call(f)) : (temp << yield(f)) }
     temp
   end
 
+  #INJECT
   def my_inject(init = nil)
     if !init.nil?
       memo = init
@@ -67,6 +120,7 @@ module Enumerable
   end
 end
 
+#MULTIPLY_ELS (inject test)
 def multiply_els(array)
   array.my_inject(2) { |res, c| res * c }
 end
