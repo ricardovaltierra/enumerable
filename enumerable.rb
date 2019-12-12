@@ -38,7 +38,7 @@ module Enumerable
   def my_all?(pattern = nil)
     if pattern # If a pattern is given
       my_each do |element|
-        unless pattern === element 
+        unless pattern === element
           return false
           break
         end
@@ -51,7 +51,7 @@ module Enumerable
         end
       end
     else # If nothing is given
-      my_each do |element| 
+      my_each do |element|
         unless element
           return false
           break
@@ -78,7 +78,7 @@ module Enumerable
         end
       end
     else # If nothing is given
-      my_each do |element| 
+      my_each do |element|
         if element
           return true
           break
@@ -96,18 +96,18 @@ module Enumerable
   # COUNT
   def my_count(item = nil)
     count = 0
-    my_each { |z| block_given? ? (count += 1 if yield(z)) : if !item.nil? then (count += 1 if item == z) else count = length end }
+    my_each { |z| if block_given? then (count += 1 if yield(z)) elsif !item.nil? then (count += 1 if item == z) else count = length end }
     count
   end
 
   # MAP
   def my_map(&proc)
     temp = []
-    my_each do |f| 
-      if block_given? 
+    my_each do |f|
+      if block_given?
         temp << yield(f)
-      else 
-        defined?(proc) ? temp << proc.call(f) : temp << f
+      else
+        temp <<  defined?(proc) ? proc.call(f) : temp << f
       end
     end
     temp
