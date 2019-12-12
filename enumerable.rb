@@ -39,22 +39,19 @@ module Enumerable
     if pattern # If a pattern is given
       my_each do |element|
         unless pattern === element
-          return false
-          break
+          return false          
         end
       end
     elsif block_given? # If a block is given
       my_each do |element|
         unless yield(element)
-          return false
-          break
+          return false          
         end
       end
     else # If nothing is given
       my_each do |element|
         unless element
-          return false
-          break
+          return false          
         end
       end
     end
@@ -66,22 +63,19 @@ module Enumerable
     if pattern # If a pattern is given
       my_each do |element|
         if pattern === element
-          return true
-          break
+          return true          
         end
       end
     elsif block_given? # If a block is given
       my_each do |element|
         if yield(element)
-          return true
-          break
+          return true          
         end
       end
     else # If nothing is given
       my_each do |element|
         if element
-          return true
-          break
+          return true          
         end
       end
     end
@@ -96,7 +90,15 @@ module Enumerable
   # COUNT
   def my_count(item = nil)
     count = 0
-    my_each { |z| if block_given? then (count += 1 if yield(z)) elsif !item.nil? then (count += 1 if item == z) else count = length end }
+    my_each do |z| 
+      if block_given? 
+        count += 1 if yield(z) 
+      elsif !item.nil? 
+        count += 1 if item == z 
+      else 
+        count = length 
+      end 
+    end
     count
   end
 
@@ -107,7 +109,7 @@ module Enumerable
       if block_given?
         temp << yield(f)
       else
-        temp <<  defined?(proc) ? proc.call(f) : temp << f
+        temp << defined?(proc) ? proc.call(f) : temp << f
       end
     end
     temp
@@ -140,3 +142,6 @@ end
 def multiply_els(array)
   array.my_inject { |res, c| res * c }
 end
+
+arr = [2,1,5,10,400,62]
+puts arr.count(400)
