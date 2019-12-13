@@ -3,10 +3,9 @@
 module Enumerable
   # EACH
   def my_each
+    return to_enum(:enum) unless block_given?
     temp = self
     i = 0
-    return temp unless block_given?
-
     while i < temp.length
       yield(temp[i])
       i += 1
@@ -15,10 +14,9 @@ module Enumerable
 
   # EACH_WITH_INDEX
   def my_each_with_index
+    return to_enum(:enum) unless block_given?
     temp = self
     i = 0
-    return temp unless block_given?
-
     while i < temp.length
       yield(temp[i], i)
       i += 1
@@ -27,8 +25,7 @@ module Enumerable
 
   # SELECT
   def my_select
-    return self unless block_given?
-
+    return to_enum(:enum) unless block_given?
     temp = []
     my_each { |e| temp << e if yield(e) }
     temp
@@ -46,6 +43,17 @@ module Enumerable
     end
     flag
   end
+
+  def my_all?(pattern = nil)
+    if pattern # If a pattern is given
+      my_each { |element| return false unless pattern === element }
+    elsif block_given? # If a block is given
+      my_each { |element|  return false unless yield(element) }
+    else # If nothing is given
+      my_each { |element| return false unless element }
+    end
+    true
+ end
 
   # ANY?
   def my_any?(pattern = nil)
@@ -82,12 +90,11 @@ module Enumerable
 
   # MAP
   def my_map(&proc)
+    return to_enum(:enum) unless block_given?
     temp = []
     my_each do |f|
       if block_given?
         temp << yield(f)
-      else
-        temp << defined?(proc) ? proc.call(f) : temp << f
       end
     end
     temp
