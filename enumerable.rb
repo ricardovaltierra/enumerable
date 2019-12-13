@@ -82,8 +82,7 @@ module Enumerable
 
   # MAP
   def my_map(&proc)
-    return to_enum(:enum) unless block_given?
-    
+    return to_enum(:enum) unless block_given?    
     temp = []
     my_each do |f|
       if block_given?
