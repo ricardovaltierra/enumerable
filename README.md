@@ -15,7 +15,7 @@
 
 * [Built With](#built-with)
 
-* [Code picture](#code-picture)
+* [Code](#code)
 
 * [Getting Started](#getting-started)
 
@@ -52,7 +52,7 @@ Feel free to use and recommend it.
 
 * [Ruby 2.6.4](https://www.ruby-lang.org/en/news/2019/08/28/ruby-2-6-4-released/)
 
-## Code Picture
+## Code
 
 ```ruby
 # frozen_string_literal: true
