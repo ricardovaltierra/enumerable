@@ -1,6 +1,6 @@
 # Enumerable Methods
 
-> A Ruby Project.
+> Microverse Ruby Project.
 
 <p align="right">
   <br>
