@@ -15,7 +15,7 @@
 
 * [Built With](#built-with)
 
-* [Code picture](#Code picture)
+* [Code picture](#code-picture)
 
 * [Getting Started](#getting-started)
 
