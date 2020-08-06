@@ -8,7 +8,7 @@ The project consist on the implementation of my particular version of Ruby’s e
 
 ## 🔗 link to assignment
 
-The full assignment can be found in the Odin Project's HTML and CSS course that can be found [here](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks).
+The full assignment can be found in the Odin Project's HTML and CSS courses that can be found [here](https://www.theodinproject.com/courses/ruby-programming/lessons/advanced-building-blocks).
 
 
 
@@ -17,7 +17,7 @@ The full assignment can be found in the Odin Project's HTML and CSS course that 
 - Ruby
 - Github
 
-Basic ruby and github was used on this project.
+Basic ruby and GitHub were used on this project.
 
 ## 🚀 the project
 
@@ -158,7 +158,7 @@ end
 
 ## 🤝 contributing
 
-Contributions, issues and feature requests are welcome!<br/>Feel free to check [issues page](https://github.com/ricardovaltierra/enumerable-methods/issues).
+Contributions, issues, and feature requests are welcome!<br/>Feel free to check [issues page](https://github.com/ricardovaltierra/enumerable-methods/issues).
 
 1. Fork it (https://github.com/ricardovaltierra/enumerable-methods/development/fork)
 2. Create your working branch (git checkout -b [choose-a-name])
